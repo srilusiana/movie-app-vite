@@ -6,6 +6,7 @@ import Movies from "../components/movies/Movies"
 import Counter from "../components/Counter";
 import AddMovie from "../components/addMovie/AddMovie";
 import data from '../utils/constans/data';
+import Button from "../components/UI/button/Index";
 
 
 
@@ -14,14 +15,16 @@ function Home() {
     const [movies, setMovies] = useState(data);
     return(
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <main>
                 <Hero />
+                <Button variant="primary">Lihat</Button>
+                <Button variant="secondary" full>Lihat</Button>
                 <Movies movies={movies} setMovies={setMovies} />
                 <AddMovie movies={movies} setMovies={setMovies} />
                 {/* <Counter /> */}
             </main>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

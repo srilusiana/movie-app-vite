@@ -1,15 +1,28 @@
-import styles from "./Footer.module.css";
+// import styles from "./Footer.module.css";
+import styled from "styled-components";
 
-function Footer(){
-    return(
-        <div className={styles.container}>
-            <footer className={styles.footer}>
-                <h2 className={styles.footer_title}>Movie App</h2>
-                <p className={styles.footer_author}>Created By Sri Lusiana</p>
-            </footer>
+const StyledFooter = styled.footer`
+  background-color: #4361ee;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
 
-        </div>
-    );
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+`;
+
+function Footer() {
+  return (
+    <StyledFooter>
+      <h2>Movie App</h2>
+      <p>Created By Sri Lusiana</p>
+    </StyledFooter>
+  );
 }
 
 export default Footer;

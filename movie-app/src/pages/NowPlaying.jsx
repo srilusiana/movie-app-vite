@@ -4,9 +4,9 @@ import Footer from "../components/footer/Footer";
 function NowPlaying(){
     return(
         <>
-        <Navbar />
+        {/* <Navbar /> */}
             <h2>Now Playing</h2>
-        <Footer />
+        {/* <Footer /> */}
         </>
     )
 }
