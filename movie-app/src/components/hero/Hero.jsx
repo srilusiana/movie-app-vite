@@ -1,6 +1,9 @@
 // import styles from "./Hero.module.css";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import Typography from "../UI/typography/Index";
+import Media from "../UI/media/Index";
+import Button from "../UI/button/Index";
 
 const StyledHero = styled.section`
   margin: 1rem;
@@ -11,26 +14,31 @@ const StyledHero = styled.section`
 
   .left {
     margin-bottom: 1rem;
+    flex-basis: 40%;
   }
 
-  .title {
+  .right {
+    flex-basis: 60%;
+  }
+
+  h2 {
     color: #4361ee;
     margin-bottom: 1rem;
     font-size: 2.44rem;
   }
 
-  .genre {
+  h3 {
     color: #b5179e;
     margin-bottom: 1rem;
     font-size: 1.59rem;
   }
 
-  .desc {
+  p {
     color: #64748b;
     margin-bottom: 1rem;
   }
 
-  .button {
+  button {
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 10px;
@@ -38,7 +46,7 @@ const StyledHero = styled.section`
     color: #fff;
   }
 
-  .poster {
+  img {
     max-width: 100%;
     height: auto;
     border-radius: 25px;
@@ -51,14 +59,6 @@ const StyledHero = styled.section`
     justify-content: space-between;
     align-items: center;
     text-align: left;
-
-    .left {
-      flex-basis: 40%;
-    }
-
-    .right {
-      flex-basis: 60%;
-    }
   }
 `;
 
@@ -79,13 +79,13 @@ function Hero() {
   return (
     <StyledHero>
       <div className="left">
-        <h2 className="title">{movie.Title}</h2>
-        <h3 className="genre">Genre: {movie.Genre}</h3>
-        <p className="desc">{movie.Plot}</p>
-        <button className="button">Watch</button>
+      <Typography.Heading>{movie.Title}</Typography.Heading>
+        <Typography.Paragraph>Genre: {movie.Genre}</Typography.Paragraph>
+        <Typography.Paragraph>{movie.Plot}</Typography.Paragraph>
+        <Button size="md" variant="primary">Watch</Button>
       </div>
       <div className="right">
-        <img className="poster" src={movie.Poster} alt={movie.Title} />
+        <Media.Image src={movie.Poster} alt={movie.Title} />
       </div>
     </StyledHero>
   );
