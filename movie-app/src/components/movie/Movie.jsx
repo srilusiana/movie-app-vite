@@ -1,7 +1,5 @@
 // import styles from './Movie.module.css';
 import styled from "styled-components";
-import Typography from "../UI/typography/Index";
-import Media from "../UI/media/Index";
 
 const StyledMovie = styled.div`
   margin-bottom: 1rem;
@@ -37,13 +35,16 @@ const StyledMovie = styled.div`
 `;
 
 function Movie(props) {
-  const { movie } = props;
+    const {movie} = props;
+    const tmdbImage =`https://image.tmdb.org/t/p/w300/${movie.poster_path}`;
+    const year = movie.year || movie.release_date;
+
 
   return (
     <StyledMovie>
-      <Media.Image src={movie.poster} alt={movie.title} />
-      <Typography.Heading>{movie.title}</Typography.Heading>
-      <Typography.Paragraph>{movie.year}</Typography.Paragraph>
+      <img src={movie.poster || tmdbImage} alt={movie.title} />
+      <h3>{movie.title}</h3>
+      <p>{year}</p>
     </StyledMovie>
   );
 }

@@ -5,8 +5,24 @@ const colors = {
   secondary: "#b5179e",
 };
 
+const sizes = {
+  sm: {
+    fontSize: '0.8rem',
+    padding: '0.2rem 0.5rem',
+  },
+  md: {
+    fontSize: '1rem',
+    padding: '0.5rem 1rem',
+  },
+  lg: {
+    fontSize: '1.3rem',
+    padding: '0.5rem 1rem',
+  },
+};
+
 const Button = styled.button`
-  padding: 0.8rem 2rem;
+  padding: ${({ size }) => sizes[size || 'md'].padding};
+  font-size: ${({ size }) => sizes[size || 'md'].fontSize};
   border: none;
   border-radius: 10px;
   color: #fff;

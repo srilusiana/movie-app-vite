@@ -1,8 +1,5 @@
 // import styles from "./Hero.module.css";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-import Typography from "../UI/typography/Index";
-import Media from "../UI/media/Index";
 import Button from "../UI/button/Index";
 
 const StyledHero = styled.section`
@@ -62,30 +59,22 @@ const StyledHero = styled.section`
   }
 `;
 
-function Hero() {
-  const [movie, setMovie] = useState({});
-
-  useEffect(() => {
-    async function fetchMovie() {
-      const url = "https://www.omdbapi.com/?apikey=fcf50ae6&i=tt2975590";
-      const response = await fetch(url);
-      const data = await response.json();
-      setMovie(data);
-    }
-
-    fetchMovie();
-  }, []);
+function Hero({ movie }) {
+  if (!movie) return null;
 
   return (
     <StyledHero>
       <div className="left">
-      <Typography.Heading>{movie.Title}</Typography.Heading>
-        <Typography.Paragraph>Genre: {movie.Genre}</Typography.Paragraph>
-        <Typography.Paragraph>{movie.Plot}</Typography.Paragraph>
+        <h1>{movie.title || movie.name}</h1>
+        <h2>Rating: {movie.vote_average}</h2>
+        <p>{movie.overview}</p>
         <Button size="md" variant="primary">Watch</Button>
       </div>
       <div className="right">
-        <Media.Image src={movie.Poster} alt={movie.Title} />
+        <img
+          src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+          alt={movie.title || movie.name}
+        />
       </div>
     </StyledHero>
   );

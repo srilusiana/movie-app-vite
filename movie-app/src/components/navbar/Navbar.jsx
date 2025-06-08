@@ -1,7 +1,6 @@
 // import styles from "./Navbar.module.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Typography from "../UI/typography/Index";
 
 const StyledNavbar = styled.div`
   background-color: #4361ee;
@@ -57,7 +56,7 @@ function Navbar() {
     <StyledNavbar>
       <nav>
         <div>
-          <Typography.Heading as="h1">Movie App</Typography.Heading>
+          <h1>Movie App</h1>
         </div>
         <div>
           <ul>

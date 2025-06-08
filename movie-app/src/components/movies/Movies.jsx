@@ -1,7 +1,7 @@
 import styles from "./Movies.module.css";
 import Movie from "../movie/Movie";
-import data from "../../utils/constans/data";
-import {useState} from 'react';
+// import data from "../../utils/constans/data";
+// import {useState} from 'react';
 
 function Movies(props) {
 const {movies, setMovies} = props;

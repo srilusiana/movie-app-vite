@@ -1,6 +1,5 @@
 // import styles from "./Footer.module.css";
 import styled from "styled-components";
-import Typography from "../UI/typography/Index";
 
 const StyledFooter = styled.footer`
   background-color: #4361ee;
@@ -20,8 +19,8 @@ const StyledFooter = styled.footer`
 function Footer() {
   return (
     <StyledFooter>
-      <Typography.Heading>Movie App</Typography.Heading>
-      <Typography.Paragraph>Created By Sri Lusiana</Typography.Paragraph>
+      <h2>Movie App</h2>
+      <p>Created By Sri Lusiana</p>
     </StyledFooter>
   );
 }
