@@ -4,15 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Hero from "../components/hero/Hero";
 import Movies from "../components/movies/Movies";
+import ENDPOINT from "../utils/constans/endpoint";
 
 function NowPlaying() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     async function fetchNowPlayingMovie() {
-      const API_KEY = import.meta.env.VITE_API_KEY;
-      const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`;
-      const response = await axios(URL);
+      // const API_KEY = import.meta.env.VITE_API_KEY;
+      // const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`;
+      const response = await axios(ENDPOINT.NOWPLAYING);
       setMovies(response.data.results);
     }
 

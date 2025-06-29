@@ -1,16 +1,20 @@
 import Hero from "../components/hero/Hero";
 import Movies from "../components/movies/Movies";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
+import ENDPOINT from "../utils/constans/endpoint";
+import MoviesContext from "../components/context/MoviesContext";
 
 function Popular() {
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
+  const {setMovies} = useContext(MoviesContext);
 
-  useEffect(() => {
+  useEffect(function() {
     async function fetchPopularMovie() {
-      const API_KEY = import.meta.env.VITE_API_KEY;
-      const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
-      const response = await axios.get(URL);
+      // const API_KEY = import.meta.env.VITE_API_KEY;
+      // const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+      // const response = await axios.get(URL);
+      const response = await axios(ENDPOINT.POPULAR)
       setMovies(response.data.results);
     }
     fetchPopularMovie();
@@ -18,8 +22,8 @@ function Popular() {
 
   return (
     <>
-      {movies.length > 0 && <Hero movie={movies[0]} />}
-      <Movies movies={movies.slice(1)} />
+      <Hero />
+      <Movies title="Popular Movies" />
     </>
   );
 }

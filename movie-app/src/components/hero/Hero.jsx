@@ -1,6 +1,8 @@
 // import styles from "./Hero.module.css";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 import Button from "../UI/button/Index";
+import axios from "axios";
 
 const StyledHero = styled.section`
   margin: 1rem;
@@ -56,25 +58,54 @@ const StyledHero = styled.section`
     justify-content: space-between;
     align-items: center;
     text-align: left;
-  }
-`;
+  }`
+;
 
-function Hero({ movie }) {
-  if (!movie) return null;
+function Hero() {
+  const [movie, setMovie] = useState({});
+  const API_KEY = import.meta.env.VITE_API_KEY;
+
+  useEffect(() => {
+    async function fetchTrendingMovies() {
+      const API_KEY = import.meta.env.VITE_API_KEY;
+      const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
+      const response = await axios(URL);
+      const firstMovie = response.data.results[0]; //mengambil data pertama
+      // console.log(firstMovie)
+      return firstMovie;
+    }
+    async function fetchDetailMovie() {
+      const trendingMovie = await fetchTrendingMovies();
+      const id = trendingMovie.id;
+      const params = `?api_key=${API_KEY}&append_to_response=videos`;
+      const URL = `https://api.themoviedb.org/3/movie/${id}${params}`;
+      const response = await axios(URL);
+      setMovie(response.data);
+    }
+    fetchDetailMovie(), fetchTrendingMovies();
+  }, []);
+
+  // useEffect(() => {
+  //   async function fetchMovie() {
+  //     const url = "https://www.omdbapi.com/?apikey=fcf50ae6&i=tt2975590";
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     setMovie(data);
+  //   }
+
+  //   fetchMovie();
+  // }, []);
 
   return (
     <StyledHero>
       <div className="left">
-        <h1>{movie.title || movie.name}</h1>
-        <h2>Rating: {movie.vote_average}</h2>
+        <h2>{movie.title}</h2>
+        <h3>Genre: {movie.Genre}</h3>
         <p>{movie.overview}</p>
         <Button size="md" variant="primary">Watch</Button>
       </div>
       <div className="right">
-        <img
-          src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-          alt={movie.title || movie.name}
-        />
+        <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title} />
       </div>
     </StyledHero>
   );

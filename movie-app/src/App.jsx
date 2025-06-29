@@ -10,13 +10,18 @@ import Layout from './layout/Index'
 import TopRatedMovie from './pages/TopRated'
 import PopularMovie from './pages/Popular'
 import Counter from './components/counter/Counter'
+import DetailMovie from './pages/Detail'
+import data from './utils/constans/data'
+import MoviesContext from './components/context/MoviesContext'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [movies, setMovies] = useState(data);
+  const contextValue = {movies, setMovies}
   return (
     <>
       {/* <Home /> */}
+    <MoviesContext.Provider value={contextValue}>
     <Layout>
       <Routes>
         <Route path='/' element={<Home />}></Route>
@@ -25,8 +30,10 @@ function App() {
         <Route path="/movie/top" element={<TopRatedMovie />} />
         <Route path="/movie/popular" element={<PopularMovie />} />
         <Route path="/counter" element={<Counter />} />
+        <Route path="/movie/:id" element={<DetailMovie/>}></Route>
       </Routes>
     </Layout>
+    </MoviesContext.Provider>
 
     </>
   )
