@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Alert from "../alert/Alert";
-import styles from "./Addmovie.module.css";
+import styles from "./AddMovie.module.css";
 import Movies from "../movies/Movies";
 
 function AddMovieForm(props) {
