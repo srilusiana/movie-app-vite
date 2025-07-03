@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import Alert from "../alert/Alert";
-import styles from "./Addmovie.module.css";
-import Movies from "../movies/Movies";
+import styles from "./AddMovie.module.css";
 import { useNavigate } from "react-router-dom";
 import MoviesContext from "../context/MoviesContext";
 
