@@ -1,13 +1,14 @@
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
 import Hero from "../components/hero/Hero";
 import Movies from "../components/movies/Movies";
 import ENDPOINT from "../utils/constans/endpoint";
+import MoviesContext from "../components/context/MoviesContext";
 
 function NowPlaying() {
-  const [movies, setMovies] = useState([]);
+  const {setMovies} = useContext(MoviesContext);
 
   useEffect(() => {
     async function fetchNowPlayingMovie() {
@@ -22,8 +23,8 @@ function NowPlaying() {
 
   return (
     <>
-        <Hero movie={movies[0]} />
-        <Movies movies={movies.slice(1)} />
+        <Hero />
+        <Movies title="Popular Movies" />
     </>
   );
 }
