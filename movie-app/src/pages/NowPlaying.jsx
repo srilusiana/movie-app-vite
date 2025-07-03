@@ -24,7 +24,7 @@ function NowPlaying() {
   return (
     <>
         <Hero />
-        <Movies title="Popular Movies" />
+        <Movies title="NowPlaying Movies" />
     </>
   );
 }
